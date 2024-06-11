@@ -1,0 +1,51 @@
+<main dir="rtl">
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col text-center">
+        <h1 class="alert alert-success text-success">قائمة الطعام</h1>
+        <div class="row bg-dark text-white">
+          <div class="col">
+             <span class="p-2">السعر </span>  <span class="p-2">  {{total}}</span>
+          </div>
+          <div class="col">
+            <span class="p-2">عدد الطلبات </span>  <span class="p-2">  {{qty}}</span>
+          </div>
+        </div>
+  
+        <div class="card d-flex align-items-center justify-content-center">
+          
+          <div class="card-body">
+          <!--<label for="p1" class="mb-3" style="padding-left: 20px;">ادخل اسم المنتج</label>-->
+          <input type="text" id="p1" class="form-control-custom mb-3" placeholder="ادخل اسم المنتج" [(ngModel)]="prodname">
+            <table class="table">
+              <thead>
+                <tr>
+                  <td>رقم المنتج</td>
+                  <td>اسم المنتج</td>
+                  <td>سعر المنتج</td>
+                  <td>وصف المنتج</td>
+                  <td>صورة المنتج</td>
+                  <td>الاختيار</td>
+                </tr>
+              </thead>
+  
+              <tbody>
+                <tr *ngFor="let item of find(foodmenu)" class="text-center align-middle">
+                  <td>{{item.id}}</td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.price}}</td>
+                  <td>{{item.description}}</td>
+                  <td><img [src]="item.img" alt="" width="100" height="100"></td>
+                  <td><input type="checkbox" (change)="sum($event, item.price)"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+</main>
+
+<router-outlet />
